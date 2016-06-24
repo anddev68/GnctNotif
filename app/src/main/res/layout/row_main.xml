@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="72dp">
+
+    <ImageView
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/circle"
+        android:id="@+id/icon" />
+
+    <TextView
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:text=""
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textColor="#ffffff"
+        android:id="@+id/iconText" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:paddingTop="16dp"
+        android:paddingLeft="72dp"
+        android:text="2016/04,04(Fri) III"
+        android:textSize="16sp"
+        android:id="@+id/date" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/date"
+        android:paddingLeft="72dp"
+        android:text="subject"
+        android:textSize="14sp"
+        android:id="@+id/msg" />
+
+
+</RelativeLayout>

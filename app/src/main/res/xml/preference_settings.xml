@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ListPreference android:title="学年"
+        android:key="gakunen"
+        android:summary="学年を設定してください"
+        android:entries="@array/pref_gakunen"
+        android:entryValues="@array/pref_gakunen"/>
+
+    <ListPreference android:title="学科"
+        android:key="gakka"
+        android:summary="学科・専攻を設定してください"
+        android:entries="@array/pref_gakka"
+        android:entryValues="@array/pref_gakka"/>
+
+    <Preference android:title="今すぐ取得"
+        android:key="right_now"
+        android:summary="今すぐ授業変更を確認します"/>
+
+
+
+</PreferenceScreen>

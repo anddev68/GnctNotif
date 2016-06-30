@@ -4,6 +4,7 @@ package anddev68.jp.gnctnotif;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
@@ -49,8 +50,13 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         addPreferencesFromResource(R.xml.preference_settings);
         setupActionBar();
 
+
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+        String gakkaStr = pref.getString("gakka",null);
+        String gakunenStr = pref.getString("gakunen",null);
+
         //  今すぐ取得ボタン
-        Preference rightNow = findPreference("right_now");
+        final Preference rightNow = findPreference("right_now");
         rightNow.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
@@ -60,6 +66,28 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             }
         });
 
+
+        //  学科選択
+        final ListPreference gakka = (ListPreference) findPreference("gakka");
+        if(gakkaStr!=null) gakka.setSummary(gakkaStr);
+        gakka.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object o) {
+                gakka.setSummary(o.toString());
+                return true;
+            }
+        });
+
+        //  学年選択
+        final ListPreference gakunen = (ListPreference) findPreference("gakunen");
+        if(gakunenStr!=null) gakunen.setSummary(gakunenStr);
+        gakunen.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object o) {
+                gakunen.setSummary(o.toString());
+                return true;
+            }
+        });
 
 
     }

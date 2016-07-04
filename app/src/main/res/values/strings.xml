@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">gnctnotif</string>
+    <string name="app_name">NIT,GC授業変更通知</string>
 
     <!-- Strings related to Settings -->
     <string-array name="pref_gakunen">
@@ -19,6 +19,12 @@
         <item>Ｙ</item>
         <item>Ｓ</item>
         <item>Ｋ</item>
+    </string-array>
+
+    <string-array name="pref_auto">
+        <item>自動取得しない</item>
+        <item>毎日 AM7:00</item>
+        <!--<item>毎週月曜日 AM7:00</item> -->
     </string-array>
 
 

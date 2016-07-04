@@ -50,10 +50,12 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         addPreferencesFromResource(R.xml.preference_settings);
         setupActionBar();
 
-
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
         String gakkaStr = pref.getString("gakka",null);
         String gakunenStr = pref.getString("gakunen",null);
+        String autoStr = pref.getString("auto",null);
+
+        final DailyScheduler scheduler = new DailyScheduler(getApplicationContext());
 
         //  今すぐ取得ボタン
         final Preference rightNow = findPreference("right_now");
@@ -65,6 +67,29 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                 return true;
             }
         });
+
+        //  自動取得
+        final ListPreference auto = (ListPreference) findPreference("auto");
+        if(autoStr!=null) auto.setSummary(autoStr);
+        auto.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object o) {
+                auto.setSummary(o.toString());
+                switch(o.toString()){
+                    case "自動取得しない":
+                        scheduler.cancel(NotificationService.class,0,0);
+                        break;
+                    case "毎日 AM7:00":
+                        scheduler.setByTime(NotificationService.class,7,0,0);
+                        break;
+                    case "毎週月曜日 AM7:00":
+                        break;
+                }
+
+                return true;
+            }
+        });
+
 
 
         //  学科選択
@@ -102,5 +127,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }
+
+
 
 }

@@ -13,6 +13,12 @@
         android:entries="@array/pref_gakka"
         android:entryValues="@array/pref_gakka"/>
 
+    <ListPreference android:title="自動取得設定"
+        android:key="auto"
+        android:summary="自動取得する場合は設定してください"
+        android:entries="@array/pref_auto"
+        android:entryValues="@array/pref_auto"/>
+
     <Preference android:title="今すぐ取得"
         android:key="right_now"
         android:summary="今すぐ授業変更を確認します"/>
